@@ -1,0 +1,134 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Ronak Gaur</title>
+<style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+.content {
+  width: 80%; /* or any width you want */
+  max-width: 800px; /* or any max-width you want */
+}
+h2 {
+  
+  margin-bottom: 10px;
+}
+
+
+.circle-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .circle img {
+            width: 100%;
+            height: auto;
+        }
+
+        .circle:hover {
+            transform: scale(1.2);
+        }
+
+        .tooltip {
+            visibility: hidden;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; 
+            left: 50%; 
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .circle:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+</style>
+</head>
+<body>
+  
+    
+  <label class="switch">
+    <input type="checkbox" id="dark-mode-toggle">
+    <span class="slider round"></span>
+  </label>
+  
+    <div class="right">
+      <div class="navbar">
+        <a href="index.html">About</a>
+        
+        <a href="education.html">Education</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="skills.html">Skills</a> 
+        <a href="blog.html">Blog</a>
+        <a href="easteregg.gif">Easter Egg</a>
+        </div>
+        <h2 style="font-family: 'Arial', sans-serif; font-size: 2.5em;  text-align: left;">
+         Skills
+      </h2>
+
+        <div class="circle-container">
+          <div class="circle">
+              <img src="javascript.png" alt="JavaScript">
+              <span class="tooltip">JavaScript</span>
+          </div>
+          <div class="circle">
+              <img src="python.png" alt="Python">
+              <span class="tooltip">Python</span>
+          </div>
+          <div class="circle">
+              <img src="CSS.png" alt="CSS">
+              <span class="tooltip">Java</span>
+          </div>
+          <div class="circle">
+              <img src="rust.png" alt="Rust">
+              <span class="tooltip">C++</span>
+          </div>
+          <div class="circle">
+              <img src="html.png" alt="HTML">
+              <span class="tooltip">HTML/CSS</span>
+          </div>
+      </div>
+            <div class="social">
+        <p><i>Connect with me on :</i></p>
+        <a href="https://www.instagram.com/ron.ak_g/"><img src="instagram.png" alt="Instagram"></a>
+        <a href="https://github.com/ronsagaur"><img src="github.png" alt="Github"></a>
+        <a href="https://twitter.com/RonakGaur5"><img src="twitter.png" alt="Twitter"></a>
+        <a href="mailto:ronakgaur17@gmail.com"><img src="email.png" alt="Email"></a></a>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
+

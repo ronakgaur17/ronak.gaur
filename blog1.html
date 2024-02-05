@@ -1,0 +1,159 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Ronak Gaur</title>
+<style>
+body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        article {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+       
+        .like-button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .comment-section {
+            margin-top: 50px;
+        }
+
+        .comment-section textarea {
+            width: 100%;
+            height: 100px;
+            padding: 12px 20px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            resize: none;
+        }
+        #home-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: none;
+    background: none;
+}
+
+
+</style>
+</head>
+<body>
+  
+  <a href="blog.html">
+    <button id="home-button">
+        <img src="saveimg.png" width="60" alt="Home">
+    </button>
+</a>
+    <label class="switch">
+        <input type="checkbox" id="dark-mode-toggle">
+        <span class="slider round"></span>
+      </label>
+  
+      <header>
+        <h1>What makes Messi the best football player.</h1>
+        <p>Published on February 5, 2024</p>
+    </header>
+
+    <article>
+        
+
+        <h2>1.All time La-Liga top scorer:</h2>
+        <p>Messi made his debut for the 'Blaugrana' back in 2004 and he has since gone on to become the all-time top scorer of La Liga, the Spanish domestic league football. The Argentine has scored for Barcelona a total of 474 goals in 520 appearances. Lionel ...
+
+          </p>
+
+        <h2>2.Only player to win four prestigious awards in a single season:</h2>
+        <p>Messi, who holds the record for most number of Ballon d'Or, with 7 wins, is also the only footballer to win the FIFA World Player, Pichichi Trophy and Golden Boot, all during his 2009/10 campaign, when the then 22-year-old won his first Ballon D'or, ...
+
+          </p>
+
+        <h2>3.A legend for club and country:
+
+          Read more at: </h2>
+        <p>The Argentine made made his senior debut when he was just 18, on 17 August 2005, against Hungary. Messi was brought on at the 63rd minute, only to be sent off just 2 minutes later, following a foul on Hungary's Vilmos Vanczák. He however went on to p...
+
+          </p>
+
+        <footer>
+            <p>Thank you for reading!</p>
+            <p>Feel free to share your thoughts in the comments section.</p>
+        </footer>
+    </article>
+    
+    <button class="like-button" id="like-button">Like <span id="like-count">0</span></button>
+
+    <div class="comment-section">
+        <h2>Comments</h2>
+        <textarea id="comment" placeholder="Write a comment..."></textarea>
+        <button id="submit-comment">Submit Comment</button>
+        <div id="comments-list"></div>
+    </div>
+</div>
+  <script >
+    if (localStorage.getItem('dark-mode') === 'true') {
+    document.body.classList.add('dark-mode');
+    document.querySelector('#dark-mode-toggle').checked = true;
+}
+
+document.querySelector('#dark-mode-toggle').addEventListener('change', function() {
+    document.body.classList.toggle('dark-mode');
+
+    
+    localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
+
+});
+window.onload = function() {
+    var likeButton = document.getElementById('like-button');
+    var likeCount = document.getElementById('like-count');
+    var submitComment = document.getElementById('submit-comment');
+    var commentInput = document.getElementById('comment');
+    var commentsList = document.getElementById('comments-list');
+
+    // Load the like count and comments from localStorage
+    likeCount.textContent = localStorage.getItem('likeCount') || '0';
+    var comments = JSON.parse(localStorage.getItem('comments')) || [];
+    comments.forEach(function(comment) {
+        var newComment = document.createElement('p');
+        newComment.textContent = comment;
+        commentsList.appendChild(newComment);
+    });
+
+    likeButton.addEventListener('click', function() {
+        var currentCount = parseInt(likeCount.textContent, 10);
+        likeCount.textContent = currentCount + 1;
+        localStorage.setItem('likeCount', likeCount.textContent);
+    });
+
+    submitComment.addEventListener('click', function() {
+        if (commentInput.value.trim() !== '') {
+            var newComment = document.createElement('p');
+            newComment.textContent = commentInput.value;
+            commentsList.appendChild(newComment);
+            comments.push(commentInput.value);
+            localStorage.setItem('comments', JSON.stringify(comments));
+            commentInput.value = '';
+        }
+    });
+};
+  </script>
+</body>
+</html>

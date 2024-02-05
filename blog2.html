@@ -1,0 +1,151 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Ronak Gaur</title>
+<style>
+body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        article {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+       
+        .like-button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .comment-section {
+            margin-top: 50px;
+        }
+
+        .comment-section textarea {
+            width: 100%;
+            height: 100px;
+            padding: 12px 20px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            resize: none;
+        }
+        #home-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: none;
+    background: none;
+}
+
+
+</style>
+</head>
+<body>
+  
+  <a href="blog.html">
+    <button id="home-button">
+        <img src="saveimg.png" width="60" alt="Home">
+    </button>
+</a>
+    <label class="switch">
+        <input type="checkbox" id="dark-mode-toggle">
+        <span class="slider round"></span>
+      </label>
+  
+      <header>
+        <h1>What makes Ronaldo the best football player.</h1>
+        <p>Published on February 5, 2024</p>
+    </header>
+
+    <article>
+        
+
+        <h2>1. Ronaldo has Proven Himself in More Leagues</h2>
+        <p>Ronaldo has a unique versatility to his play style. He is able to adapt and thrive despite different conditions with different coaches in different leagues. He has also played in five of the best leagues in the world, not only as a good player, but as the best. This diversity and ability to change roles displays his unique ability to become a master of all skills</p>
+
+        <h2>2.Ronaldo Scores More Penalties</h2>
+        <p>In 2016, Ronaldo carried a team of Portuguese scrubs to the final of the 2016 Euros. The Euro is a form of European currency. But it is also an international tournament with the most elite European teams competing for the trophy. This tournament is much more competitive than the low quality of the Copa America. One might argue that Pele, Maradona, Neymar, Ronaldo Nazario, Messi, and a whole host of other great players played in the Copa America. However, the list of great European players is longer. Therefore, reigning victorious in the Euro is a much greater achievement than Messi’s Copa America win.</p>
+
+        <h2>3.Ronaldo won the Euros in 2016</h2>
+        <p>Messi and Ronaldo are both attacking players, and therefore both entrusted with taking penalty kicks for their team. However, Ronaldo is much better at burying this uncontested shot from twelve yards out. Over Ronaldo’s twenty-one year career, he has scored 130 club penalties. Messi, in contrast, has only 109 penalty goals. Although a twenty-one goal margin seems small, these penalties could be the difference between a trophy or scoring record</p>
+
+        <footer>
+            <p>Thank you for reading!</p>
+            <p>Feel free to share your thoughts in the comments section.</p>
+        </footer>
+    </article>
+    
+    <button class="like-button" id="like-button">Like <span id="like-count">0</span></button>
+
+    <div class="comment-section">
+        <h2>Comments</h2>
+        <textarea id="comment" placeholder="Write a comment..."></textarea>
+        <button id="submit-comment">Submit Comment</button>
+        <div id="comments-list"></div>
+    </div>
+</div>
+  <script >
+    if (localStorage.getItem('dark-mode') === 'true') {
+    document.body.classList.add('dark-mode');
+    document.querySelector('#dark-mode-toggle').checked = true;
+}
+
+document.querySelector('#dark-mode-toggle').addEventListener('change', function() {
+    document.body.classList.toggle('dark-mode');
+
+    
+    localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
+
+});
+window.onload = function() {
+    var likeButton = document.getElementById('like-button');
+    var likeCount = document.getElementById('like-count');
+    var submitComment = document.getElementById('submit-comment');
+    var commentInput = document.getElementById('comment');
+    var commentsList = document.getElementById('comments-list');
+
+    // Load the like count and comments from localStorage
+    likeCount.textContent = localStorage.getItem('likeCount') || '0';
+    var comments = JSON.parse(localStorage.getItem('comments')) || [];
+    comments.forEach(function(comment) {
+        var newComment = document.createElement('p');
+        newComment.textContent = comment;
+        commentsList.appendChild(newComment);
+    });
+
+    likeButton.addEventListener('click', function() {
+        var currentCount = parseInt(likeCount.textContent, 10);
+        likeCount.textContent = currentCount + 1;
+        localStorage.setItem('likeCount', likeCount.textContent);
+    });
+
+    submitComment.addEventListener('click', function() {
+        if (commentInput.value.trim() !== '') {
+            var newComment = document.createElement('p');
+            newComment.textContent = commentInput.value;
+            commentsList.appendChild(newComment);
+            comments.push(commentInput.value);
+            localStorage.setItem('comments', JSON.stringify(comments));
+            commentInput.value = '';
+        }
+    });
+};
+  </script>
+</body>
+</html>
